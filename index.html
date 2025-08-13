@@ -5,17 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MinMood</title>
 
-
-<body>
-    <h1 class="heading">MinMood</h1>
-    <link rel="stylesheet" href="styles.css">
-
-    <p class="teaser">coming soon...</p>
-    
-</body>
 </html>
 
-<div class="container">
-  <button>Get started ✨</button>
-</div>
 
+</style>
+</head>
+<body>
+<link rel="stylesheet" href="styles.css">
+    <h1>MinMood</h1>
+    <p>coming soon...</p>
+    <button id="popupBtn">Get started ✨</button>
+
+    <!-- Popup -->
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <h1>ERROR</h1>
+            <p>hier gibt es noch nix zu sehen</p>
+            <button id="closePopup">Schließen</button>
+        </div>
+    </div>
+
+<script type="text/javascript">
+  const audio = new Audio();
+  audio.src = "sounds/sound.wav"; // ohne Punkt am Anfang
+
+  const closeBtn = document.getElementById('popupBtn');
+  closeBtn.addEventListener('click', () => {
+    audio.play(); //
+     });
+</script>
+
+<script>
+    const popup = document.getElementById('popup');
+    const popupBtn = document.getElementById('popupBtn');
+    const closePopup = document.getElementById('closePopup');
+
+    popupBtn.addEventListener('click', () => {
+        popup.style.display = 'flex';
+    });
+
+    closePopup.addEventListener('click', () => {
+        popup.style.display = 'none';
+    });
+
+    // Optional: Klick außerhalb schließt auch
+    popup.addEventListener('click', (e) => {
+        if (e.target === popup) {
+            popup.style.display = 'none';
+        }
+    });
+</script>
