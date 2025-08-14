@@ -167,7 +167,7 @@ button:hover {
 
 /* Popup-Inhalt */
 .popup-content {
-    background: hsla(345, 50%, 50%, 0.6);
+    background: hsla(345, 50%, 30%, 1);
     padding: 20px 40px;
     border-radius: 20px;
     text-align: center;
