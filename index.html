@@ -5,23 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MiniMood</title>
 
+    <!-- Vollbildmodus iOS & Android -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#121212">
+
     <!-- Standard-Favicon -->
-<link rel="icon" type="image/png" href="favicon_standard.png">
+    <link rel="icon" type="image/png" href="favicon_standard.png">
 
-<!-- Für iOS- und Android-Home-Screen-Icons -->
-<link rel="apple-touch-icon" href="favicon.png">
+    <!-- Für iOS- und Android-Home-Screen-Icons -->
+    <link rel="apple-touch-icon" href="favicon.png">
 
-<!-- Für ältere Browser, optional -->
-<link rel="shortcut icon" href="favicon_standard.png" type="image/x-icon">
+    <!-- Für ältere Browser -->
+    <link rel="shortcut icon" href="favicon_standard.png" type="image/x-icon">
 
-</html>
-
-
-
-</style>
+    <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-<link rel="stylesheet" href="styles.css">
+    
     <h1>MiniMood</h1>
     <p>coming soon...</p>
     <button id="popupBtn">Get started ✨</button>
@@ -35,33 +37,27 @@
         </div>
     </div>
 
-<script type="text/javascript">
-  const audio = new Audio();
-  audio.src = "sounds/sound.wav"; // ohne Punkt am Anfang
+    <script>
+        const audio = new Audio("sounds/sound.wav");
 
-  const closeBtn = document.getElementById('popupBtn');
-  closeBtn.addEventListener('click', () => {
-    audio.play(); //
-     });
-</script>
+        const popupBtn = document.getElementById('popupBtn');
+        const closePopup = document.getElementById('closePopup');
+        const popup = document.getElementById('popup');
 
-<script>
-    const popup = document.getElementById('popup');
-    const popupBtn = document.getElementById('popupBtn');
-    const closePopup = document.getElementById('closePopup');
+        popupBtn.addEventListener('click', () => {
+            popup.style.display = 'flex';
+            audio.play();
+        });
 
-    popupBtn.addEventListener('click', () => {
-        popup.style.display = 'flex';
-    });
-
-    closePopup.addEventListener('click', () => {
-        popup.style.display = 'none';
-    });
-
-    // Optional: Klick außerhalb schließt auch
-    popup.addEventListener('click', (e) => {
-        if (e.target === popup) {
+        closePopup.addEventListener('click', () => {
             popup.style.display = 'none';
-        }
-    });
-</script>
+        });
+
+        popup.addEventListener('click', (e) => {
+            if (e.target === popup) {
+                popup.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
