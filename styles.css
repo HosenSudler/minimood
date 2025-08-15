@@ -116,8 +116,7 @@ h1 {
     background: hsl(0 0% 20%);
     padding: 0.1em 0.5em;
     border-radius: 15px;
-    margin-top: 1.3em;
-    
+    margin-top: 1.4em;
     
 }
 
@@ -209,21 +208,10 @@ html, body {
   min-height: 100%;
 }
 
-/* Dunklerer oberer Rand für iOS Web App */
-body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: env(safe-area-inset-top);
-    background-color: hsl(0, 0%, 5%); /* dunkler als Body-Hintergrund */
-    z-index: 9999;
-}
-
 body {
   padding-top: env(safe-area-inset-top);
   padding-left: env(safe-area-inset-left);
   padding-right: env(safe-area-inset-right);
   padding-bottom: env(safe-area-inset-bottom);
 }
+
