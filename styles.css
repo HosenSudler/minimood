@@ -103,7 +103,6 @@ body   {
     background: hsl(0, 0%, 10%);
     color: hsl(0 0% 98%);
     font-family: 'Funnel Sans', sans-serif;
-    margin-top: 60px;
     text-align: center;
 }
 
@@ -117,6 +116,7 @@ h1 {
     background: hsl(0 0% 20%);
     padding: 0.1em 0.5em;
     border-radius: 15px;
+    margin-top: 1.3em;
     
     
 }
@@ -127,11 +127,11 @@ p{
     text-align: center;
     margin-top: 0.2em;
     color: hsl(0 0% 85%)
+  
 }
 
 .container {
     text-align: center;
-    
 }
 button{
     background-color: hsl(202, 100%, 50%);
@@ -205,8 +205,20 @@ button:hover {
 html, body {
   margin: 0;
   padding: 0;
-  background-color: #121212; /* deine Farbe */
+  background-color: hsl(0 0% 10%); /* deine Farbe */
   min-height: 100%;
+}
+
+/* Dunklerer oberer Rand für iOS Web App */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: env(safe-area-inset-top);
+    background-color: hsl(0, 0%, 5%); /* dunkler als Body-Hintergrund */
+    z-index: 9999;
 }
 
 body {
