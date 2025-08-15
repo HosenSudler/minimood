@@ -1,0 +1,8 @@
+{
+  "name": "Minimood",
+  "short_name": "Minimood",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#121212", 
+  "background_color": "#121212"
+}
