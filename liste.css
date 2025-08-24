@@ -22,7 +22,7 @@ h1 {
   background: hsl(0 0% 20%);
   padding: 0.1em 0.5em;
   border-radius: 15px;
-  margin-top: 1.4em;
+  margin-top: auto;
   box-shadow: 0px 0px 5px 5px hsl(0 0% 9%);
 }
 
@@ -93,4 +93,45 @@ p {
   box-shadow: 0px 0px 5px 3px hsla(0,0%,0%,0.3);
   margin-top: 1em;
   text-align: start;
+}
+
+.topbar {
+  display: flex;             
+  justify-content: flex-end;  
+  align-items: center;         
+  width: 100%;                 
+  padding: 0.5em 0.5em;
+  box-sizing: border-box;
+  margin-bottom: 2em;
+}
+
+.topbar button {
+  
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  font-family: 'Funnel Sans', sans-serif;
+  color: hsl(0, 0%, 98%);
+  background-color: hsl(340, 100%, 50%);
+  box-shadow: 0px 0px 5px 5px hsla(340, 100%, 50%, 0.1);
+  margin-top: 0.5em;
+  transition: transform 0.4s ease;
+  display: flex;
+  justify-content: end;
+  align-items: center;  
+  padding: 0 1em; 
+
+  
+}
+
+.topbar button:hover {
+      transform: scale(1.05);
+  background-color: hsl(340, 100%, 40%);
+  box-shadow: 0px 0px 5px 5px hsla(340, 100%, 40%, 0.2);
+}
+
+.topbar a {
+  text-decoration: none; /* entfernt den Strich */
 }
