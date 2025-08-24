@@ -24,40 +24,18 @@
 
 <body>
 
-    <h1>MiniMood</h1>
-    <p>coming soon...</p>
-    <button id="popupBtn">Get started ✨</button>
+    <h1>My Minimood</h1>
+<p>Turn counting school hours into a fun activity!</p>
 
-    <!-- Popup -->
-    <div id="popup" class="popup">
-        <div class="popup-content">
-            <h1>ERROR</h1>
-            <p>hier gibt es noch nix zu sehen</p>
-            <button id="closePopup">Schließen</button>
-        </div>
-    </div>
+<div class="addbtncon">
+    <img src="favicon_standard.png" alt="">
 
-    <script>
-        const audio = new Audio("sounds/sound.wav");
+    <a href="liste.html">
+  <button>+</button>
+</a>
 
-        const popupBtn = document.getElementById('popupBtn');
-        const closePopup = document.getElementById('closePopup');
-        const popup = document.getElementById('popup');
+</div>
 
-        popupBtn.addEventListener('click', () => {
-            popup.style.display = 'flex';
-            audio.play();
-        });
 
-        closePopup.addEventListener('click', () => {
-            popup.style.display = 'none';
-        });
 
-        popup.addEventListener('click', (e) => {
-            if (e.target === popup) {
-                popup.style.display = 'none';
-            }
-        });
-    </script>
-</body>
 </html>

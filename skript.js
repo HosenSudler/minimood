@@ -9,3 +9,7 @@ document.body.addEventListener('click', () => {
         }).catch(() => {});
     }
 }, { once: true }); // nur einmal
+
+
+
+
