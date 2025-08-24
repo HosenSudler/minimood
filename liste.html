@@ -3,18 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kalender Buttons</title>
+  <title>Moodlist</title>
 
   <link rel="stylesheet" href="liste.css">
 
 </head>
 
 <body>
-  <h1>Moonlist</h1>
+  <h1>My Moodlist</h1>
   <p>Klicke auf ein Feld, um es zu aktivieren!</p>
 
   <div class="calendar">
-    <!-- Beispiel: 28 Tage -->
     <button class="day-btn">1</button>
     <button class="day-btn">2</button>
     <button class="day-btn">3</button>
@@ -79,10 +78,9 @@
       });
     }
 
-    // ==== Start ====
+
     ladeWitzeDatei().then(() => {
       setupButtons();
-      
     });
   </script>
 </body>
