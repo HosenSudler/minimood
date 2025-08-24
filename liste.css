@@ -1,0 +1,96 @@
+
+body {
+  background: hsl(0, 0%, 10%);
+  color: hsl(0 0% 98%);
+  font-family: 'Funnel Sans', sans-serif;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  padding-top: env(safe-area-inset-top);
+
+  padding: 0 20px;
+}
+
+h1 {
+  font-family: 'Funnel Sans', sans-serif;
+  color: hsl(0, 0%, 98%);
+  font-weight: 800;
+  display: inline-block;
+  font-size: 44px;
+  margin-bottom: 0.2em;
+  background: hsl(0 0% 20%);
+  padding: 0.1em 0.5em;
+  border-radius: 15px;
+  margin-top: 1.4em;
+  box-shadow: 0px 0px 5px 5px hsl(0 0% 9%);
+}
+
+p {
+  font-weight: 300;
+  font-style: italic;
+  text-align: center;
+  margin-top: 0.2em;
+  color: hsl(0 0% 85%);
+}
+
+
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr); 
+  gap: 12px;
+  max-width: 800px;
+  margin: 2em auto;
+  background: hsl(0 0% 20%);
+  padding: 20px;
+  border-radius: 1em;
+  box-shadow: 0px 0px 5px 5px hsla(202, 0%, 9%, 1);
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: auto;
+}
+
+
+.day-btn {
+  padding: 20px;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  font-family: 'Funnel Sans', sans-serif;
+  color: hsl(0, 0%, 98%);
+  background-color: hsl(202, 100%, 50%);
+  box-shadow: 0px 0px 5px 5px hsla(202, 100%, 50%, 0.1);
+
+  transition: background-color 0.4s ease, 
+              box-shadow 0.4s ease, 
+              transform 0.4s ease;
+}
+
+.day-btn:hover {
+  transform: scale(1.05);
+  background-color: hsl(202, 100%, 40%);
+  box-shadow: 0px 0px 5px 5px hsla(202, 100%, 40%, 0.2);
+}
+
+.day-btn.active {
+  background-color: hsl(140, 80%, 40%);
+  box-shadow: 0px 0px 8px 5px hsla(140, 80%, 40%, 0.3);
+}
+
+
+#witz-container {
+  margin: 2em auto;
+  max-width: 600px;
+  background: hsl(0 0% 20%);
+  padding: 15px 20px;
+  border-radius: 12px;
+  color: hsl(0 0% 98%);
+  font-style: italic;
+  font-size: 18px;
+  text-align: center;
+  box-shadow: 0px 0px 5px 3px hsla(0,0%,0%,0.3);
+  margin-top: 1em;
+  text-align: start;
+}

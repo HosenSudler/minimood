@@ -1,14 +1,89 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Liste</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kalender Buttons</title>
+
+  <link rel="stylesheet" href="liste.css">
+
 </head>
+
 <body>
-    <h1>hallo</h1>
+  <h1>Moonlist</h1>
+  <p>Klicke auf ein Feld, um es zu aktivieren!</p>
+
+  <div class="calendar">
+    <!-- Beispiel: 28 Tage -->
+    <button class="day-btn">1</button>
+    <button class="day-btn">2</button>
+    <button class="day-btn">3</button>
+    <button class="day-btn">4</button>
+    <button class="day-btn">5</button>
+    <button class="day-btn">6</button>
+    <button class="day-btn">7</button>
+    <button class="day-btn">8</button>
+    <button class="day-btn">9</button>
+    <button class="day-btn">10</button>
+    <button class="day-btn">11</button>
+    <button class="day-btn">12</button>
+    <button class="day-btn">13</button>
+    <button class="day-btn">14</button>
+    <button class="day-btn">15</button>
+    <button class="day-btn">16</button>
+    <button class="day-btn">17</button>
+    <button class="day-btn">18</button>
+  </div>
 
 
 
+ <!-- Witz-Ausgabe -->
+  <div id="witz-container"></div>
+
+  <script>
+    let alleWitze = [];   // komplette Liste aus Datei
+    let restWitze = [];   // noch nicht gezeigte Witze
+
+    // ==== Witze-Datei laden ====
+    async function ladeWitzeDatei() {
+      try {
+        const response = await fetch("witze.txt");
+        const text = await response.text();
+        alleWitze = text.split("\n").filter(line => line.trim() !== "");
+        restWitze = [...alleWitze]; // Kopie für Start
+      } catch (error) {
+        console.error(error);
+        alleWitze = ["Kein Witz verfügbar 😅"];
+        restWitze = [...alleWitze];
+      }
+    }
+
+    // ==== Zufallswitz anzeigen ====
+    function zeigeZufallsWitz() {
+      if (restWitze.length === 0) {
+        // Alle durch → neu starten
+        restWitze = [...alleWitze];
+      }
+      const randomIndex = Math.floor(Math.random() * restWitze.length);
+      const [witz] = restWitze.splice(randomIndex, 1); // zieht und entfernt
+      document.getElementById("witz-container").innerText = witz;
+    }
+
+    // ==== Buttons vorbereiten ====
+    function setupButtons() {
+      document.querySelectorAll(".day-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          btn.classList.toggle("active");
+          zeigeZufallsWitz(); // Bei jedem Klick neuen Witz zeigen
+        });
+      });
+    }
+
+    // ==== Start ====
+    ladeWitzeDatei().then(() => {
+      setupButtons();
+      
+    });
+  </script>
 </body>
 </html>
