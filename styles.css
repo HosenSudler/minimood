@@ -299,3 +299,7 @@ body {
 .container-row > .addbtncon {
   margin: 3em 0;
 }
+
+html, body {
+  overflow-x: hidden; 
+}
