@@ -7,7 +7,19 @@
 
   <link rel="stylesheet" href="liste.css">
   
+    <!-- Vollbildmodus iOS & Android -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#121212">
 
+    <!-- Standard-Favicon -->
+    <link rel="icon" type="image/png" href="favicon_standard.png">
+
+    <!-- Für iOS- und Android-Home-Screen-Icons -->
+    <link rel="apple-touch-icon" href="favicon.png">
+
+    <!-- Für ältere Browser -->
+    <link rel="shortcut icon" href="favicon_standard.png" type="image/x-icon">
 
 </head>
 
@@ -16,7 +28,7 @@
     <div class="topbar">
 <a href="index.html">
           
-<button>↩</button>
+<button>x</button>
     </a>
     </div>
 
@@ -50,8 +62,8 @@
   <div id="witz-container"></div>
 
   <script>
-    let alleWitze = [];   // komplette Liste aus Datei
-    let restWitze = [];   // noch nicht gezeigte Witze
+    let alleWitze = [];   
+    let restWitze = [];   
 
     // ==== Witze-Datei laden ====
     async function ladeWitzeDatei() {
@@ -62,7 +74,7 @@
         restWitze = [...alleWitze]; // Kopie für Start
       } catch (error) {
         console.error(error);
-        alleWitze = ["Kein Witz verfügbar 😅"];
+        alleWitze = ["Kein Witz verfügbar"];
         restWitze = [...alleWitze];
       }
     }
