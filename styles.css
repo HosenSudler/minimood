@@ -149,13 +149,15 @@ button{
     box-shadow: 0px 0px 5px 5px hsla(202, 100%, 50%, 0.1);
     transition: background-color 0.3s ease;
     font-weight: 500;
+    transition: all 0.4s ease;
     
 }
 
 button:hover {
-  background-color: hsl(202, 100%, 40%); /* dunkler beim Hover */
-  box-shadow: 0px 0px 5px 5px hsla(202, 100%, 40%, 0.1); /* Schatten verstärken */
+  background-color: hsl(202, 100%, 40%); 
+  box-shadow: 0px 0px 5px 5px hsla(202, 100%, 40%, 0.1); 
   transform: scale(1.05);
+  transition: all 0.4s ease;
 }
 
 
@@ -163,7 +165,7 @@ button:hover {
 html, body {
   margin: 0;
   padding: 0;
-  background-color: hsl(0 0% 10%); /* deine Farbe */
+  background-color: hsl(0 0% 10%);
   min-height: 100%;
 }
 
@@ -203,45 +205,97 @@ body {
 
 
 
+.fakebtn img {
+  height: 100px;
+   filter: brightness(0.8);
+  
+}
 
+.fakebtn {
+  text-align: center;
+   display: flex;
+  flex-direction: column; 
+  align-items: center;   
+  gap: 20px;
+  background-color: hsl(0 0% 18%);
 
+  width: 100px;      
+  padding: 15px;   
+  border-radius: 1em;         
+  margin: 0 auto;
 
-/* ========== KALENDER GRID ========== */
-.calendar {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr); /* 7 Spalten */
-  gap: 12px;
-  max-width: 800px;
-  margin: 2em auto;
-  background: hsl(0 0% 20%);
-  padding: 20px;
-  border-radius: 1em;
   box-shadow: 0px 0px 5px 5px hsla(202, 0%, 9%, 1);
+  margin-top: 3em;
 }
 
-/* ================= KALENDER BUTTONS ================= */
-.day-btn {
-  padding: 20px;
-  border-radius: 12px;
-  font-size: 18px;
-  font-weight: 500;
-  cursor: pointer;
-  border: none;
-  font-family: 'Funnel Sans', sans-serif;
-  color: hsl(0, 0%, 98%);
-  background-color: hsl(202, 100%, 50%);
-  box-shadow: 0px 0px 5px 5px hsla(202, 100%, 50%, 0.1);
-
-  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+.fakebtn button {
+ font-size: 15px;
+ padding: 7px 30px;
+ background: linear-gradient(to bottom right, hsl(202, 100%, 40%), hsl(202, 100%, 50%));
+ box-shadow: 0px 0px 5px 5px hsla(202, 100%, 50%, 0.1);
 }
 
-.day-btn:hover {
+.fakebtn button:hover {
+  box-shadow: 0px 0px 5px 5px hsla(202, 100%, 40%, 0.1); 
+}
+
+.fakebtn2 img {
+  height: 100px;
+  filter: brightness(0.8);
+  
+}
+
+.fakebtn2 {
+  text-align: center;
+   display: flex;
+  flex-direction: column; 
+  align-items: center;   
+  gap: 20px;
+  background-color: hsl(0 0% 18%);
+
+  width: 100px;      
+  padding: 15px;   
+  border-radius: 1em;         
+  margin: 0 auto;
+
+  box-shadow: 0px 0px 5px 5px hsla(202, 0%, 9%, 1);
+
+  margin-top: 3em;
+}
+
+.fakebtn2 button {
+ font-size: 15px;
+ padding: 7px 30px;
+ background: linear-gradient(to bottom right, hsl(202, 100%, 40%), hsl(202, 100%, 50%));
+ box-shadow: 0px 0px 5px 5px hsla(202, 100%, 50%, 0.1);
+}
+
+.fakebtn2 button:hover {
+  box-shadow: 0px 0px 5px 5px hsla(202, 100%, 40%, 0.1); 
+}
+
+.container-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  
+}
+
+.fakebtn, .addbtncon, .fakebtn2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.4s ease;
+}
+
+.fakebtn:hover, .addbtncon:hover, .fakebtn2:hover {
   transform: scale(1.05);
-  background-color: hsl(202, 100%, 40%);
-  box-shadow: 0px 0px 5px 5px hsla(202, 100%, 40%, 0.2);
+
 }
 
-.day-btn.active {
-  background-color: hsl(140, 80%, 40%); /* Grün */
-  box-shadow: 0px 0px 8px 5px hsla(140, 80%, 40%, 0.3);
+.container-row > .fakebtn,
+.container-row > .fakebtn2,
+.container-row > .addbtncon {
+  margin: 3em 0;
 }
