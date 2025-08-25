@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Moodlist</title>
+  <title>Minimood</title>
 
-  <link rel="stylesheet" href="liste.css">
+  <link rel="stylesheet" href="liste.css?v=1.2">
   
     <!-- Vollbildmodus iOS & Android -->
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -28,11 +28,26 @@
     <div class="topbar">
 <a href="index.html">
           
-<button>x</button>
+<button>&times;</button>
     </a>
     </div>
 
-  <h1>My Moodlist</h1>
+    
+    <div class="heading">
+  <h1 id="moodHeading">My Moodlist</h1>
+</div>
+
+<script>
+window.addEventListener("DOMContentLoaded", () => {
+  const savedName = localStorage.getItem("moodlistName");
+  if (savedName) {
+    document.getElementById("moodHeading").innerText = savedName;
+  }
+});
+</script>
+
+  
+
   <p>Click the Buttons!</p>
 
   <div class="calendar">
@@ -61,49 +76,6 @@
  <!-- Witz-Ausgabe -->
   <div id="witz-container"></div>
 
-  <script>
-    let alleWitze = [];   
-    let restWitze = [];   
-
-    // ==== Witze-Datei laden ====
-    async function ladeWitzeDatei() {
-      try {
-        const response = await fetch("witze.txt");
-        const text = await response.text();
-        alleWitze = text.split("\n").filter(line => line.trim() !== "");
-        restWitze = [...alleWitze]; // Kopie für Start
-      } catch (error) {
-        console.error(error);
-        alleWitze = ["Kein Witz verfügbar"];
-        restWitze = [...alleWitze];
-      }
-    }
-
-    // ==== Zufallswitz anzeigen ====
-    function zeigeZufallsWitz() {
-      if (restWitze.length === 0) {
-        // Alle durch → neu starten
-        restWitze = [...alleWitze];
-      }
-      const randomIndex = Math.floor(Math.random() * restWitze.length);
-      const [witz] = restWitze.splice(randomIndex, 1); // zieht und entfernt
-      document.getElementById("witz-container").innerText = witz;
-    }
-
-    // ==== Buttons vorbereiten ====
-    function setupButtons() {
-      document.querySelectorAll(".day-btn").forEach(btn => {
-        btn.addEventListener("click", () => {
-          btn.classList.toggle("active");
-          zeigeZufallsWitz(); // Bei jedem Klick neuen Witz zeigen
-        });
-      });
-    }
-
-
-    ladeWitzeDatei().then(() => {
-      setupButtons();
-    });
-  </script>
+<script src="witze.js"></script>
 </body>
 </html>

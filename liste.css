@@ -26,12 +26,23 @@ h1 {
   box-shadow: 0px 0px 5px 5px hsl(0 0% 9%);
 }
 
+.heading {
+  transition: all 0.4s ease;
+  text-shadow: 3px 3px 5px rgba(0,0,0,0.5);
+}
+
+.heading:hover {
+  transform: scale(1.05);
+
+}
+
 p {
   font-weight: 300;
   font-style: italic;
   text-align: center;
   margin-top: 0.2em;
   color: hsl(0 0% 85%);
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
 }
 
 
@@ -62,7 +73,7 @@ p {
   color: hsl(0, 0%, 98%);
   background-color: hsl(202, 100%, 50%);
   box-shadow: 0px 0px 5px 5px hsla(202, 100%, 50%, 0.1);
-
+  text-shadow: 1px 1px 5px rgba(0,0,0,0.3);
   transition: background-color 0.4s ease, 
               box-shadow 0.4s ease, 
               transform 0.4s ease;
@@ -70,13 +81,12 @@ p {
 
 .day-btn:hover {
   transform: scale(1.05);
-  background-color: hsl(202, 100%, 40%);
-  box-shadow: 0px 0px 5px 5px hsla(202, 100%, 40%, 0.2);
+
 }
 
 .day-btn.active {
-  background-color: hsl(140, 80%, 40%);
-  box-shadow: 0px 0px 8px 5px hsla(140, 80%, 40%, 0.3);
+  background-color: hsl(143, 85%, 50%);
+  box-shadow: 0px 0px 20px 5px hsla(143, 80%, 40%, 0.3);
 }
 
 
@@ -93,6 +103,7 @@ p {
   box-shadow: 0px 0px 5px 3px hsla(0,0%,0%,0.3);
   margin-top: 1em;
   text-align: start;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
 }
 
 .topbar {
@@ -121,17 +132,21 @@ p {
   display: flex;
   justify-content: end;
   align-items: center;  
-  padding: 0 1em; 
-  line-height: 1.2;
+  padding: 5px 1em; 
+  line-height: 1;
+  text-shadow: 1px 1px 5px rgba(0,0,0,0.3);
   
 }
 
 .topbar button:hover {
       transform: scale(1.05);
-  background-color: hsl(340, 100%, 40%);
-  box-shadow: 0px 0px 5px 5px hsla(340, 100%, 40%, 0.2);
+
 }
 
 .topbar a {
   text-decoration: none;
+}
+
+html, body {
+  overflow-x: hidden; 
 }

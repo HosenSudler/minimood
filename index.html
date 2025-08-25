@@ -19,15 +19,19 @@
     <!-- Für ältere Browser -->
     <link rel="shortcut icon" href="favicon_standard.png" type="image/x-icon">
 
-    <link rel="stylesheet" href="styles.css?v=1.0">
+    <link rel="stylesheet" href="styles.css?v=1.2">
 
-    
+
 
 </head>
 
 <body>
 
+  <div class="heading">
     <h1>My Minimood</h1>
+  </div>
+
+
 <p>Turn counting school hours into a fun activity!</p>
 
 <div class="container-row">
@@ -37,17 +41,29 @@
       <button>+</button>
     </div>
 
-    <div class="addbtncon">
-      <img src="favicon_standard.png" alt="">
-      <a href="liste.html"><button>+</button></a>
-    </div>
+<div class="addbtncon">
+  <img src="favicon_standard.png" alt="">
+  <button id="openPopup">+</button>
+</div>
 
     <div class="fakebtn">
       <img src="favicon_standard.png" alt="">
       <button>+</button>
     </div>
+ </div> 
 
+<!-- Popup -->
+<div id="namePopup" class="popup">
+  <div class="popup-content">
+    <button class="closePopup">&times;</button> <!-- Exit-Button -->
+    <h2>Name of your list:</h2>
+    <input type="text" id="username" placeholder="...">
+    <button id="saveName">Continue</button>
   </div>
+
+<script src="popup.js"></script>
+
+</div>
 </body>
 
 </html>
