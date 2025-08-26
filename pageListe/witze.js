@@ -1,6 +1,7 @@
   let alleWitze = [];   
     let restWitze = [];   
 
+
     // ==== Witze-Datei laden ====
     async function ladeWitzeDatei() {
       try {
@@ -56,3 +57,6 @@ function setupButtons() {
     ladeWitzeDatei().then(() => {
       setupButtons();
     });
+
+
+

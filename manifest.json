@@ -3,6 +3,6 @@
   "short_name": "Minimood",
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#121212", 
-  "background_color": "#121212"
+  "theme_color": "#1a1a1a", 
+  "background_color": "#1a1a1a"
 }

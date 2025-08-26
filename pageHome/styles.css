@@ -97,7 +97,7 @@
 
 
 
-
+/* Main */
 
 body   {
     background: hsl(0, 0%, 10%);
@@ -115,17 +115,17 @@ h1 {
     display: inline-block;
     font-size: 44px;
     margin-bottom: 0.2em;
-    background: hsl(0 0% 20%);
+    background: hsl(0 0% 15%);
     padding: 0.1em 0.5em;
     border-radius: 15px;
     margin-top: 1.4em;
-    box-shadow: 0px 0px 5px 5px hsl(0 0% 9%)
+    box-shadow: 0px 0px 5px 5px hsl(0 0% 8%)
     
 }
 
 .heading {
   transition: all 0.4s ease;
-  text-shadow: 3px 3px 5px rgba(0,0,0,0.5);
+  text-shadow: 3px 3px 5px rgba(0,0,0,0.8);
 }
 
 .heading:hover {
@@ -134,7 +134,7 @@ h1 {
 }
 
 p{
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    text-shadow: 1px 1px 3px rgba(0,0,0,1);
     font-weight: 300;
     font-style: italic;
     text-align: center;
@@ -150,7 +150,7 @@ p{
 
 button{
 
-    background: linear-gradient(to bottom right, hsl(202, 100%, 50%), hsl(202, 100%, 75%));
+    background: linear-gradient(to bottom right, hsl(202, 100%, 50%), hsl(202, 100%, 70%));
     border: none;
     font-size: 20px;
     padding: 18px 72px;
@@ -177,14 +177,20 @@ button:hover {
 html, body {
   margin: 0;
   padding: 0;
-  background-color: hsl(0 0% 10%);
+  background-color: hsl(0 0% 3%);
   min-height: 100%;
+  overflow-x: hidden; 
 }
 
 body {
   padding-top: env(safe-area-inset-top);
 }
 
+
+
+
+
+/* Selection Karusell */
 
 .addbtncon img {
   height: 150px;
@@ -198,14 +204,14 @@ body {
   flex-direction: column; 
   align-items: center;   
   gap: 20px;
-  background-color: hsl(0 0% 20%);
+  background-color: hsl(0 0% 15%);
 
   width: 150px;      
   padding: 20px;   
   border-radius: 1em;         
   margin: 0 auto;
 
-  box-shadow: 0px 0px 5px 5px hsla(202, 0%, 9%, 1);
+  box-shadow: 0px 0px 5px 5px hsla(202, 0%, 8%, 1);
 
   margin-top: 3em;
 }
@@ -229,14 +235,14 @@ body {
   flex-direction: column; 
   align-items: center;   
   gap: 20px;
-  background-color: hsl(0 0% 18%);
+  background-color: hsl(0 0% 10%);
 
   width: 100px;      
   padding: 15px;   
   border-radius: 1em;         
   margin: 0 auto;
 
-  box-shadow: 0px 0px 5px 5px hsla(202, 0%, 9%, 1);
+  box-shadow: 0px 0px 5px 5px hsla(202, 0%, 5%, 1);
   margin-top: 3em;
 }
 
@@ -263,14 +269,14 @@ body {
   flex-direction: column; 
   align-items: center;   
   gap: 20px;
-  background-color: hsl(0 0% 18%);
+  background-color: hsl(0 0% 10%);
 
   width: 100px;      
   padding: 15px;   
   border-radius: 1em;         
   margin: 0 auto;
 
-  box-shadow: 0px 0px 5px 5px hsla(202, 0%, 9%, 1);
+  box-shadow: 0px 0px 5px 5px hsla(202, 0%, 5%, 1);
 
   margin-top: 3em;
 }
@@ -312,9 +318,8 @@ body {
   margin: 3em 0;
 }
 
-html, body {
-  overflow-x: hidden; 
-}
+
+/* Popup Name */
 
 
 .popup {
@@ -322,22 +327,22 @@ html, body {
   position: fixed;
   top: 0; left: 0;
   width: 100%; height: 100%;
-  background: rgba(0,0,0,0.6);
+  background: rgba(0,0,0,0.4);
   justify-content: center;
   align-items: center;
  
 }
 
 .popup-content {
-  background: hsl(0 0% 15%);
-  padding: 20px;
+  background: hsl(0 0% 10%);
+  padding: 8px;
   border-radius: 15px;
   justify-content: center;
   align-items: center;
   display: flex;
   flex-direction: column;
-  gap: 15px;
   
+  margin: 0;
 }
 
 .popup-content input {
@@ -350,18 +355,21 @@ html, body {
   font-family: 'Funnel Sans';
   font-weight: 800;
   color: hsl(0, 0%, 30%);
-  margin: auto;
+  margin-bottom: 20px;
   transition: all 0.4s ease;
+  box-shadow: 0px 0px 5px 5px hsl(0 0% 8%)
 }
 
 .popup-content h2 {
-  background: hsl(0, 0%, 20%);
-  padding: 10px 20px;
+  background: hsl(0, 0%, 15%);
+  padding: 8px 20px;
   border-radius: 10px;
-  text-shadow: 2px 2px 5px rgba(0,0,0,0.8);
+  text-shadow: 2px 2px 5px rgba(0,0,0,1);
   margin-top: 0;
-  margin-bottom: 5px;
+  margin-bottom: 20px;
   transition: all 0.4s ease;
+  margin-left: 15px; margin-right: 15px;
+  box-shadow: 0px 0px 3px 3px hsl(0 0% 9%)
 }
 
 .closePopup {
@@ -373,32 +381,29 @@ html, body {
   font-family: 'Funnel Sans', sans-serif;
   color: hsl(0, 0%, 98%);
   background: hsl(340, 100%, 50%);
-  box-shadow: 0px 0px 5px 5px hsla(340, 100%, 50%, 0.1);
-  margin-top: 0.5em;
+  box-shadow: 0px 0px 5px 5px hsla(340, 80%, 40%, 0.1);
+  margin-top: 0;
   transition: transform 0.4s ease;
-  display: flex;
-  justify-content: end;
-  align-items: center;  
-  
+  align-self: flex-end;
   line-height: 1;
   text-shadow: 1px 1px 5px rgba(0,0,0,0.3);
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  
-  
+  padding: 1px 0.6em;
+  margin-bottom: 12px;
 }
+
+
+
 
 .popup-content h2:hover {
-  transform: scale(1.05);
+  transform: scale(1.03);
 }
 
-.popup-content button {
+#saveName {
   padding: 10px 30px;
-  margin-top: 5px;
+  margin-bottom: 20px;
+  background: linear-gradient(to bottom right, hsl(202, 100%, 50%), hsl(202, 100%, 70%));
 }
 
 .popup-content input:hover {
   transform: scale(1.05);
 }
-
