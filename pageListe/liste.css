@@ -156,5 +156,41 @@ p {
   text-decoration: none;
 }
 
+/* Secret Theme bumm */
 
+.secret-theme {
+  background-image: url("../img/wolkenblur.png");
+  background-size: cover;
+  background-repeat: no-repeat;  
+  width: 100vw;
+  height: 100vh; 
+}
+
+.secret-theme .calendar {
+    background-image: url("../img/911.jpeg");
+  background-size: cover;
+  background-position: center;
+  
+}
+
+.secret-theme button {
+  background-color: hsl(0, 0%, 5%);
+  box-shadow: 0px 0px 20px 5px hsla(202, 0%, 0%, 0.5);
+}
+
+.secret-theme #witz-container, h1 {
+  background-color: hsl(0, 0%, 5%);
+}
+
+.secret-theme .topbar button {
+  box-shadow: 0px 0px 10px 3px hsla(0,0%,8%,0.5);
+}
+
+.secret-theme .day-btn.active {
+  background-color: hsl(0, 0%, 5%);
+  background-image: url("../img/bomb.png");
+  background-size: contain;
+  color: transparent;
+  box-shadow: 0px 0px 20px 5px hsla(0, 0%, 0%, 0.8);
+}
 

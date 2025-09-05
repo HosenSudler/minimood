@@ -37,15 +37,27 @@
   <h1 id="moodHeading">Witzelsite</h1>
 </div>
 
+
 <script>
 window.addEventListener("DOMContentLoaded", () => {
   const savedName = localStorage.getItem("moodlistName");
-  if (savedName) {
-    document.getElementById("moodHeading").innerText = savedName;
+  const specialMode = localStorage.getItem("specialMode") === "true";
 
-     document.title = "Minimood " + savedName;
+  const heading = document.getElementById("moodHeading");
+
+  if (savedName) {
+    heading.innerText = savedName;
+    document.title = "Minimood " + savedName;
+  } else {
+    heading.innerText = "Witzeliste";
+    document.title = "Minimood Witzeliste";
+  }
+
+  if (specialMode) {
+    document.body.classList.add("secret-theme");
   }
 });
+
 </script>
 
   

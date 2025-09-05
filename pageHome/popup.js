@@ -7,35 +7,43 @@ const closeBtn = document.querySelector(".closePopup");
 function saveName() {
   let name = input.value.trim();
 
-  // Wenn nichts eingegeben wurde → Standardname
   if (!name) {
+    // leer → Standardname
     name = "Witzeliste";
+    localStorage.setItem("specialMode", "false");
+  } else if (name.toLowerCase() === "911", "✈️") {
+    // secret → Spezialmodus
+    name = "✈️💥🏢🏢";
+    localStorage.setItem("specialMode", "true");
+  } else {
+    // alles andere → normal
+    localStorage.setItem("specialMode", "false");
   }
 
-  // Im Browser speichern
+  // Name merken
   localStorage.setItem("moodlistName", name);
 
-  // Weiterleiten zur nächsten Seite
+  // Weiterleiten
   window.location.href = "pageListe/liste.html";
 }
 
-// Öffnen des Popups
+// Popup öffnen
 document.getElementById("openPopup").addEventListener("click", () => {
   popup.style.display = "flex";
-  input.focus(); // Cursor direkt ins Eingabefeld setzen
+  input.focus();
 });
 
 // Klick auf Speichern
 saveBtn.addEventListener("click", saveName);
 
-// Enter im Input-Feld
+// Enter-Taste im Input
 input.addEventListener("keydown", (e) => {
   if (e.key === "Enter") {
     saveName();
   }
 });
 
-// Exit-Button schließt Popup
+// Exit-Button
 closeBtn.addEventListener("click", () => {
   popup.style.display = "none";
 });
