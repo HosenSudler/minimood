@@ -11,7 +11,7 @@ function saveName() {
     // leer → Standardname
     name = "Witzeliste";
     localStorage.setItem("specialMode", "false");
-  } else if (name.toLowerCase() === "911", "✈️") {
+  } else if (name.toLowerCase() === "911" || name === "✈️") {
     // secret → Spezialmodus
     name = "✈️💥🏢🏢";
     localStorage.setItem("specialMode", "true");
