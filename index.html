@@ -21,53 +21,55 @@
 
     <link rel="stylesheet" href="pageHome/styles.css?v=1.4">
 
-
-
+    <style>
+        /* Verstecktes Element für iOS-Haptik */
+        #haptic-checkbox, #haptic-label {
+            position: absolute;
+            opacity: 0;
+            height: 0;
+            width: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+    </style>
 </head>
-
 <body>
-
-  <div class="heading">
-    <h1>My Minimood</h1>
-  </div>
-
-
-<p>Turn counting school hours into a fun activity!</p>
-
-<div class="container-row">
-
-    <div class="fakebtn2">
-      <img src="img/favicon_standard.png" alt="">
-      <button>+</button>
+    <div class="heading">
+        <h1>My Minimood</h1>
     </div>
 
-<div class="addbtncon">
-  <img src="img/favicon_standard.png" alt="">
-  <button id="openPopup">+</button>
-</div>
+    <p>Turn counting school hours into a fun activity!</p>
 
-    <div class="fakebtn">
-      <img src="img/favicon_standard.png" alt="">
-      <button>+</button>
+    <div class="container-row">
+        <div class="fakebtn2">
+            <img src="img/favicon_standard.png" alt="">
+            <button>+</button>
+        </div>
+
+        <div class="addbtncon">
+            <img src="img/favicon_standard.png" alt="">
+            <button id="openPopup">+</button>
+        </div>
+
+        <div class="fakebtn">
+            <img src="img/favicon_standard.png" alt="">
+            <button>+</button>
+        </div>
     </div>
- </div> 
 
-<!-- Popup -->
-<div id="namePopup" class="popup">
-  <div class="popup-content">
-    <button class="closePopup">&times;</button> <!-- Exit-Button -->
-    <h2>Name of your list:</h2>
-    <input type="text" id="username" placeholder="...">
-    <button id="saveName">Continue</button>
-  </div>
+    <!-- Popup -->
+    <div id="namePopup" class="popup">
+        <div class="popup-content">
+            <button class="closePopup">&times;</button>
+            <h2>Name of your list:</h2>
+            <input type="text" id="username" placeholder="...">
+            <button id="saveName">Continue</button>
+        </div>
+    </div>
 
-<script src="pageHome/popup.js"></script>
+    <button id="hapticTestBtn">haptictest</button>
 
-</div>
-
-<button>hallo</button>
-
-<script>
+    <script>
         // Funktion zum Erkennen von iOS
         function isIOS() {
             return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
@@ -91,10 +93,6 @@
 
         // Funktion für haptisches Feedback
         function triggerHaptic() {
-            const button = document.getElementById('openPopup');
-            button.classList.add('vibrating'); // Visuelle Animation
-
-            // Plattformspezifische Haptik
             if (isIOS() && hapticLabel) {
                 // iOS: Simuliere Klick auf Label für Taptic-Feedback
                 hapticLabel.click();
@@ -102,24 +100,19 @@
                 // Android: Vibration API (50ms)
                 navigator.vibrate(50);
             }
-
-            // Entferne visuelle Klasse nach Animation
-            setTimeout(() => {
-                button.classList.remove('vibrating');
-            }, 300);
         }
 
         // Event-Listener für den Button
-        document.getElementById('openPopup').addEventListener('click', triggerHaptic);
-        document.getElementById('openPopup').addEventListener('touchend', (e) => {
+        document.getElementById('hapticTestBtn').addEventListener('click', triggerHaptic);
+        document.getElementById('hapticTestBtn').addEventListener('touchend', (e) => {
             e.preventDefault(); // Verhindert Doppel-Trigger
             triggerHaptic();
         });
     </script>
 
+    <!-- Dein bestehendes Skript -->
+    <script src="pageHome/popup.js"></script>
 
-<p class="versionsnummer">v1 15.2</p>
-
+    <p class="versionsnummer">v1 15.2</p>
 </body>
-
 </html>
