@@ -24,7 +24,7 @@ function saveName() {
   localStorage.setItem("moodlistName", name);
 
   // Weiterleiten
-  window.location.href = "pageListe/liste.html";
+  window.location.href = "list/index.html";
 }
 
 // Popup öffnen
