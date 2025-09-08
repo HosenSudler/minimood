@@ -65,19 +65,57 @@
 
 </div>
 
+<button>hallo</button>
 
-  <button id="hapticBtn">Fühle Haptik</button>
+<script>
+        // Funktion zum Erkennen von iOS
+        function isIOS() {
+            return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+        }
 
-  <script>
-    const btn = document.getElementById("hapticBtn");
-    btn.addEventListener("click", () => {
-      if (navigator.vibrate) {
-        navigator.vibrate(50); // 50ms Vibration
-      } else {
-        console.log("Haptik nicht unterstützt");
-      }
-    });
-  </script>
+        // Initialisiere iOS-Haptik-Element (nur bei iOS)
+        let hapticLabel = null;
+        if (isIOS()) {
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.id = 'haptic-checkbox';
+            checkbox.setAttribute('switch', ''); // Für iOS 18+ Haptik
+            checkbox.style.display = 'none';
+            document.body.appendChild(checkbox);
+
+            hapticLabel = document.createElement('label');
+            hapticLabel.htmlFor = 'haptic-checkbox';
+            hapticLabel.style.display = 'none';
+            document.body.appendChild(hapticLabel);
+        }
+
+        // Funktion für haptisches Feedback
+        function triggerHaptic() {
+            const button = document.getElementById('openPopup');
+            button.classList.add('vibrating'); // Visuelle Animation
+
+            // Plattformspezifische Haptik
+            if (isIOS() && hapticLabel) {
+                // iOS: Simuliere Klick auf Label für Taptic-Feedback
+                hapticLabel.click();
+            } else if ('vibrate' in navigator) {
+                // Android: Vibration API (50ms)
+                navigator.vibrate(50);
+            }
+
+            // Entferne visuelle Klasse nach Animation
+            setTimeout(() => {
+                button.classList.remove('vibrating');
+            }, 300);
+        }
+
+        // Event-Listener für den Button
+        document.getElementById('openPopup').addEventListener('click', triggerHaptic);
+        document.getElementById('openPopup').addEventListener('touchend', (e) => {
+            e.preventDefault(); // Verhindert Doppel-Trigger
+            triggerHaptic();
+        });
+    </script>
 
 
 <p class="versionsnummer">v1 15.2</p>
