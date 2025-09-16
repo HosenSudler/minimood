@@ -31,6 +31,27 @@
             overflow: hidden;
             pointer-events: none;
         }
+        /* Stil für Zeit-Eingabefelder */
+        .time-inputs {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .time-inputs label {
+            font-size: 16px;
+            color: #fff;
+        }
+        .time-inputs input[type="time"] {
+            padding: 8px;
+            font-size: 16px;
+            border: 1px solid #444;
+            border-radius: 5px;
+            background: #222;
+            color: #fff;
+            width: 100%;
+            box-sizing: border-box;
+        }
     </style>
 </head>
 <body>
@@ -63,11 +84,15 @@
             <button class="closePopup">&times;</button>
             <h2>Name of your list:</h2>
             <input type="text" id="username" placeholder="...">
+            <div class="time-inputs">
+                <label for="startTime">Start Time:</label>
+                <input type="time" id="startTime" step="300" required>
+                <label for="endTime">End Time:</label>
+                <input type="time" id="endTime" step="300" required>
+            </div>
             <button id="saveName">Continue</button>
         </div>
     </div>
-
-    <button id="hapticTestBtn">haptictest</button>
 
     <script>
         // Funktion zum Erkennen von iOS
@@ -81,7 +106,7 @@
             const checkbox = document.createElement('input');
             checkbox.type = 'checkbox';
             checkbox.id = 'haptic-checkbox';
-            checkbox.setAttribute('switch', ''); // Für iOS 18+ Haptik
+            checkbox.setAttribute('switch', '');
             checkbox.style.display = 'none';
             document.body.appendChild(checkbox);
 
@@ -94,25 +119,25 @@
         // Funktion für haptisches Feedback
         function triggerHaptic() {
             if (isIOS() && hapticLabel) {
-                // iOS: Simuliere Klick auf Label für Taptic-Feedback
                 hapticLabel.click();
             } else if ('vibrate' in navigator) {
-                // Android: Vibration API (50ms)
                 navigator.vibrate(50);
             }
         }
 
-        // Event-Listener für den Button
-        document.getElementById('hapticTestBtn').addEventListener('click', triggerHaptic);
-        document.getElementById('hapticTestBtn').addEventListener('touchend', (e) => {
-            e.preventDefault(); // Verhindert Doppel-Trigger
-            triggerHaptic();
-        });
+        // Event-Listener für den Button (falls benötigt)
+        const hapticTestBtn = document.getElementById('hapticTestBtn');
+        if (hapticTestBtn) {
+            hapticTestBtn.addEventListener('click', triggerHaptic);
+            hapticTestBtn.addEventListener('touchend', (e) => {
+                e.preventDefault();
+                triggerHaptic();
+            });
+        }
     </script>
 
-    <!-- Dein bestehendes Skript -->
     <script src="pageHome/popup.js"></script>
 
-    <p class="versionsnummer">v1 15.2</p>
+    <p class="versionsnummer">v1 16 (beta)</p>
 </body>
 </html>

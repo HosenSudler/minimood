@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Minimood</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Minimood</title>
 
-  <link rel="stylesheet" href="liste.css?v=1.4">
-  
+    <link rel="stylesheet" href="liste.css?v=1.5">
+    
     <!-- Vollbildmodus iOS & Android -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -20,76 +20,86 @@
 
     <!-- Für ältere Browser -->
     <link rel="shortcut icon" href="../img/favicon_standard.png" type="image/x-icon">
-
 </head>
-
 <body>
-
     <div class="topbar">
-<a href="../">
-          
-<button>&times;</button>
-    </a>
+        <a href="../">
+            <button>&times;</button>
+        </a>
     </div>
 
-    
     <div class="heading">
-  <h1 id="moodHeading">Witzelsite</h1>
-</div>
+        <h1 id="moodHeading">Witzeliste</h1>
+    </div>
 
+    <p>Click the Buttons!</p>
+
+    <div class="calendar" id="calendar">
+        <!-- Buttons werden dynamisch eingefügt -->
+    </div>
+
+    <!-- Witz-Ausgabe -->
+    <div id="witz-container"></div>
 
 <script>
-window.addEventListener("DOMContentLoaded", () => {
-  const savedName = localStorage.getItem("moodlistName");
-  const specialMode = localStorage.getItem("specialMode") === "true";
+    window.addEventListener("DOMContentLoaded", () => {
+        const savedName = localStorage.getItem("moodlistName");
+        const specialMode = localStorage.getItem("specialMode") === "true";
+        const buttonCount = parseInt(localStorage.getItem("buttonCount")) || 18;
 
-  const heading = document.getElementById("moodHeading");
+        const heading = document.getElementById("moodHeading");
+        const calendar = document.getElementById("calendar");
 
-  if (savedName) {
-    heading.innerText = savedName;
-    document.title = "Minimood " + savedName;
-  } else {
-    heading.innerText = "Witzeliste";
-    document.title = "Minimood Witzeliste";
-  }
+        if (savedName) {
+            heading.innerText = savedName;
+            document.title = "Minimood " + savedName;
+        } else {
+            heading.innerText = "Witzeliste";
+            document.title = "Minimood Witzeliste";
+        }
 
-  if (specialMode) {
-    document.body.classList.add("secret-theme");
-  }
-});
+        if (specialMode) {
+            document.body.classList.add("secret-theme");
+        }
 
+        // Buttons dynamisch erzeugen
+        const buttons = [];
+        for (let i = 1; i <= buttonCount; i++) {
+            const button = document.createElement("button");
+            button.className = "day-btn";
+            button.innerText = i;
+            calendar.appendChild(button);
+            buttons.push(button);
+        }
+
+
+
+        // Klick-Logik
+        document.addEventListener("click", (e) => {
+            if (e.target.classList.contains("day-btn") && e.target.classList.contains("active")) {
+                const currentIndex = buttons.indexOf(e.target);
+
+                // Geklickter Button → grün
+                e.target.style.backgroundColor = "green";
+                e.target.classList.remove("active");
+                e.target.classList.add("clicked");
+
+                // Witz anzeigen
+                generateWitz();
+
+                // Nach 5 Minuten nächsten Button gelb machen
+
+            }
+        });
+    });
 </script>
 
-  
+<script src="witze.js"></script>
 
-  <p>Click the Buttons!</p>
-
-  <div class="calendar">
-    <button class="day-btn">1</button>
-    <button class="day-btn">2</button>
-    <button class="day-btn">3</button>
-    <button class="day-btn">4</button>
-    <button class="day-btn">5</button>
-    <button class="day-btn">6</button>
-    <button class="day-btn">7</button>
-    <button class="day-btn">8</button>
-    <button class="day-btn">9</button>
-    <button class="day-btn">10</button>
-    <button class="day-btn">11</button>
-    <button class="day-btn">12</button>
-    <button class="day-btn">13</button>
-    <button class="day-btn">14</button>
-    <button class="day-btn">15</button>
-    <button class="day-btn">16</button>
-    <button class="day-btn">17</button>
-    <button class="day-btn">18</button>
-  </div>
-
-
-
- <!-- Witz-Ausgabe -->
-  <div id="witz-container"></div>
 
 <script src="witze.js"></script>
+
+
+    <script src="witze.js"></script>
 </body>
 </html>
