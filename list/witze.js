@@ -30,7 +30,7 @@ function zeigeZufallsWitz() {
 function setupButtons() {
   const buttons = document.querySelectorAll(".day-btn");
 
-  // Hilfsfunktion: aktiviert den nächsten Button nach 5min und setzt die Kette fort
+  // Timer-Funktion für gelb-Färbung
   function aktiviereNaechstenButton(index) {
     const nextIndex = index + 1;
     if (nextIndex < buttons.length) {
@@ -38,38 +38,40 @@ function setupButtons() {
         if (!buttons[nextIndex].classList.contains("clicked")) {
           buttons[nextIndex].style.backgroundColor = "hsla(50, 85%, 50%, 1.00)";
           buttons[nextIndex].classList.add("active");
-
-          // NACHDEM dieser Button gelb wurde, Timer für den nächsten starten
-          aktiviereNaechstenButton(nextIndex);
         }
-      }, 300000); // 5 Minuten = 300.000 ms
+        aktiviereNaechstenButton(nextIndex);
+      }, 300000); // 5 Minuten
     }
   }
 
-  // **Ersten Button jetzt erst nach 5min aktivieren**
-  setTimeout(() => {
-    if (!buttons[0].classList.contains("clicked")) {
-      buttons[0].style.backgroundColor = "hsla(50, 85%, 50%, 1.00)";
-      buttons[0].classList.add("active");
+  // Timer-Kette starten
+  aktiviereNaechstenButton(-1); // beginnt vor dem ersten Button
 
-      // Kette von diesem Button aus starten
-      aktiviereNaechstenButton(0);
-    }
-  }, 300000); // 5 Minuten
+  let lastClickedIndex = -1; // Index des letzten geklickten Buttons
 
-  // Klick-Logik
   buttons.forEach((btn, index) => {
     btn.addEventListener("click", () => {
-      if (btn.classList.contains("active")) {
+      if (index === lastClickedIndex + 1) {
+        // Vorwärts klicken
         btn.style.backgroundColor = "hsl(143, 85%, 50%)"; // grün
         btn.classList.remove("active");
         btn.classList.add("clicked");
-
+        lastClickedIndex = index;
         zeigeZufallsWitz();
+      } else if (index === lastClickedIndex) {
+        // Rückgängig in Reihenfolge
+        btn.style.backgroundColor = ""; // Standardfarbe oder zurück zu gelb, wenn Timer schon abgelaufen
+        btn.classList.remove("clicked");
+        btn.classList.remove("active"); // falls Timer noch nicht gelb war
+        lastClickedIndex = index - 1;
+      } else {
+        // Optional: Meldung, dass man nur vorwärts oder rückwärts klicken darf
+        console.log("Bitte den nächsten Button vorwärts oder rückwärts klicken!");
       }
     });
   });
 }
+
 
 
 
