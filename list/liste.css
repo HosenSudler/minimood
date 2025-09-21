@@ -95,6 +95,24 @@ p {
   box-shadow: 0px 0px 20px 5px hsla(143, 80%, 40%, 0.3);
 }
 
+/* rem-btns */
+
+.rem-btns h3 {
+  background: hsl(0 0% 15%);
+  margin-top: 1em;
+  border-radius: 12px;
+  max-width: fit-content;
+  text-align: center;
+  display: block;
+  padding: 5px 10px;
+  margin: 1em auto;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+
+
+
 /* Witze */
 
 #witz-container {
@@ -111,6 +129,7 @@ p {
   margin-top: 1em;
   text-align: start;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+  margin-bottom: 0;
 }
 
 /* Topbar (exit) */
