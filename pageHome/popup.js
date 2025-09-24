@@ -19,17 +19,18 @@ function saveName() {
     const startTime = startTimeInput.value;
     const endTime = endTimeInput.value;
 
-    // Validierung der Zeit
-    if (!startTime || !endTime) {
-        alert("Please enter both start and end times.");
-        return;
-    }
+    let buttonCount;
 
-    // Berechne die Anzahl der Buttons
-    const buttonCount = calculateButtonCount(startTime, endTime);
-    if (buttonCount <= 0) {
-        alert("End time must be after start time.");
-        return;
+    if (!startTime || !endTime) {
+        // Standard: 18 Buttons, wenn keine Zeit angegeben
+        buttonCount = 18;
+    } else {
+        // Berechne die Anzahl der Buttons
+        buttonCount = calculateButtonCount(startTime, endTime);
+        if (buttonCount <= 0) {
+            alert("End time must be after start time.");
+            return;
+        }
     }
 
     if (!name) {
@@ -52,6 +53,7 @@ function saveName() {
     // Weiterleiten
     window.location.href = "list";
 }
+
 
 // Popup öffnen
 document.getElementById("openPopup").addEventListener("click", () => {

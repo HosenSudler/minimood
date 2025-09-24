@@ -119,7 +119,7 @@ h1 {
     padding: 0.1em 0.5em;
     border-radius: 15px;
     margin-top: 1.4em;
-    box-shadow: 0px 0px 20px 5px hsl(0 0% 8%)
+    box-shadow: 0px 0px 50px 5px hsl(0 0% 10%)
     
 }
 
@@ -193,8 +193,7 @@ body {
 /* Selection Karusell */
 
 .addbtncon img {
-  height: 150px;
-   
+  height: 160px;
   
 }
 
@@ -204,15 +203,15 @@ body {
   flex-direction: column; 
   align-items: center;   
   gap: 20px;
-  background-color: hsl(0 0% 15%);
+  background-color: hsl(0 0% 10%);
   
   width: 150px;      
-  padding: 20px;   
+  padding: 30px;   
   border-radius: 1em;         
   margin: 0 auto;
 
-  box-shadow: 0px 0px 20px 5px hsla(202, 0%, 8%, 1);
-
+  box-shadow: 0px 0px 50px 5px hsla(202, 0%, 10%, 0.8);
+  overflow: hidden;
   margin-top: 3em;
 }
 
@@ -220,13 +219,63 @@ body {
  font-size: 30px;
  padding: 5px 42px;
  font-weight: 600;
+  margin-top: 0.4em;
+ animation: pulseShadow 2s infinite ease-in-out;
+ overflow: hidden;
+ 
 }
 
+@keyframes pulseShadow {
+  0% {
+        box-shadow: 0px 0px 20px 5px hsla(202, 100%, 50%, 0.2);
+  }
+  50% {
+        box-shadow: 0px 0px 50px 5px hsla(202, 100%, 50%, 0.5);
+  }
+  100% {
+        box-shadow: 0px 0px 20px 5px hsla(202, 100%, 50%, 0.2);
+  }
+}
 
+/* Pseudo-element for light sweep */
+.addbtncon button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%; /* Start off-screen */
+  width: 50%; /* Narrower for a focused sweep */
+  height: 100%;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    hsla(202, 100%, 80%, 0.4),
+    transparent
+  ); /* Subtle white glow for sweep */
+  
+  transition: left 0.4s ease; /* Smooth sweep animation */
+}
+
+.addbtncon button:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0px 0px 20px hsla(202, 100%, 50%, 0.7),
+              0px 0px 60px hsla(202, 100%, 50%, 0.4);
+  background: linear-gradient(45deg, hsl(202, 100%, 60%), hsl(202, 100%, 70%)); /* Gradual color shift */
+  
+}
+
+.addbtncon button:hover::before {
+  left: 100%; /* Sweep across to the right */
+}
+
+.fakebtn:hover, .addbtncon:hover, .fakebtn2:hover {
+  transform: scale(1.05);
+
+}
 
 .fakebtn img {
   height: 100px;
    filter: brightness(0.8);
+   filter: opacity(0);
   
 }
 
@@ -237,7 +286,7 @@ body {
   align-items: center;   
   gap: 20px;
   background-color: hsl(0 0% 10%);
-
+  
   width: 100px;      
   padding: 15px;   
   border-radius: 1em;         
@@ -250,18 +299,19 @@ body {
 .fakebtn button {
  font-size: 15px;
  padding: 7px 30px;
- background: linear-gradient(to bottom right, hsl(202, 100%, 40%), hsl(202, 100%, 50%));
- box-shadow: 0px 0px 10px 5px hsla(202, 100%, 50%, 0.1);
+ background: linear-gradient(to bottom right, hsl(333, 100%, 40%, 0), hsl(333, 100%, 50%, 0));
+ box-shadow: 0px 0px 10px 5px hsla(333, 100%, 50%, 0);
  font-weight: 600;
 }
 
 .fakebtn button:hover {
-  box-shadow: 0px 0px 10px 5px hsla(202, 100%, 40%, 0.1); 
+  box-shadow: 0px 0px 10px 5px hsla(202, 100%, 40%, 0); 
 }
 
 .fakebtn2 img {
   height: 100px;
   filter: brightness(0.8);
+  filter: opacity(0);
   
 }
 
@@ -286,13 +336,13 @@ body {
 .fakebtn2 button {
  font-size: 15px;
  padding: 7px 30px;
- background: linear-gradient(to bottom right, hsl(202, 100%, 40%), hsl(202, 100%, 50%));
- box-shadow: 0px 0px 10px 5px hsla(202, 100%, 50%, 0.1);
+ background: linear-gradient(to bottom right, hsl(143, 100%, 40%, 0), hsl(143, 100%, 50%, 0));
+ box-shadow: 0px 0px 10px 5px hsla(143, 100%, 50%, 0);
  font-weight: 600;
 }
 
 .fakebtn2 button:hover {
-  box-shadow: 0px 0px 10px 5px hsla(202, 100%, 40%, 0.1); 
+  box-shadow: 0px 0px 10px 5px hsla(202, 100%, 40%, 0); 
 }
 
 .container-row {
@@ -310,16 +360,15 @@ body {
   transition: all 0.4s ease;
 }
 
-.fakebtn:hover, .addbtncon:hover, .fakebtn2:hover {
-  transform: scale(1.05);
 
-}
 
 .container-row > .fakebtn,
 .container-row > .fakebtn2,
 .container-row > .addbtncon {
   margin: 3em 0;
 }
+
+
 
 
 /* Popup Name */
@@ -443,3 +492,36 @@ body {
 .popup-content label:hover {
   transform: scale(1.03);
 }
+
+/* Haptic */
+
+        /* Verstecktes Element für iOS-Haptik */
+        #haptic-checkbox, #haptic-label {
+            position: absolute;
+            opacity: 0;
+            height: 0;
+            width: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        /* Stil für Zeit-Eingabefelder */
+        .time-inputs {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .time-inputs label {
+            font-size: 16px;
+            color: #fff;
+        }
+        .time-inputs input[type="time"] {
+            padding: 8px;
+            font-size: 16px;
+            border: 1px solid #444;
+            border-radius: 5px;
+            background: #222;
+            color: #fff;
+            width: 100%;
+            box-sizing: border-box;
+        }
