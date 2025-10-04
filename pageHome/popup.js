@@ -4,6 +4,7 @@ const startTimeInput = document.getElementById("startTime");
 const endTimeInput = document.getElementById("endTime");
 const saveBtn = document.getElementById("saveName");
 const closeBtn = document.querySelector(".closePopup");
+const versionText = document.querySelector(".versionsnummer");
 
 // Funktion: Zeitdifferenz in 5-Minuten-Schritten berechnen
 function calculateButtonCount(startTime, endTime) {
@@ -59,6 +60,7 @@ function saveName() {
 document.getElementById("openPopup").addEventListener("click", () => {
     popup.style.display = "flex";
     input.focus();
+    versionText.style.display = "none"; // Unsichtbar machen
 });
 
 // Klick auf Speichern
@@ -74,4 +76,5 @@ input.addEventListener("keydown", (e) => {
 // Exit-Button
 closeBtn.addEventListener("click", () => {
     popup.style.display = "none";
+    versionText.style.display = "block"; // Wieder sichtbar machen
 });
