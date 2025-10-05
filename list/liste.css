@@ -67,7 +67,6 @@ p {
   margin-bottom: auto;
 }
 
-
 .day-btn {
   padding: 20px;
   border-radius: 12px;
@@ -78,22 +77,60 @@ p {
   font-family: 'Funnel Sans', sans-serif;
   color: hsl(0, 0%, 98%);
   background-color: hsl(202, 100%, 50%);
-  box-shadow: 0px 0px 20px 5px hsla(202, 80%, 40%, 0.2);
+  box-shadow: 0px 0px 20px 5px hsla(202, 80%, 40%, 0.3);
   text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
-  transition: background-color 0.4s ease, 
-              box-shadow 0.4s ease, 
+  transition: background-color 0.5s ease, 
+              box-shadow 0.5s ease, 
               transform 0.4s ease;
 }
 
 .day-btn:hover {
-  transform: scale(1.05);
-
+  transform: scale(1.08);
+  background-color: hsl(202, 100%, 63%);
+  box-shadow: 0 0 30px hsla(202, 80%, 40%, 1);
 }
 
 .day-btn.active {
   background-color: hsl(143, 85%, 50%);
-  box-shadow: 0px 0px 20px 5px hsla(143, 80%, 40%, 0.3);
+  box-shadow: 0px 0px 20px 5px hsla(143, 80%, 40%, 0.4);
+  animation: glow 1.5s infinite alternate;
 }
+
+.calendar .day-btn.active:hover {
+  background-color: hsl(143, 85%, 60%);
+  box-shadow:
+    0 0 25px 8px hsla(143, 85%, 60%, 0.6),
+    0 0 50px 15px hsla(143, 85%, 60%, 0.3);
+  transform: scale(1.08);
+}
+
+.day-btn.clicked {
+  background-color: hsl(143, 85%, 50%); /* Same green as active state */
+  box-shadow: 0px 0px 20px 5px hsla(143, 80%, 40%, 0.4);
+}
+
+.calendar .day-btn.clicked:hover {
+  background-color: hsl(143, 85%, 60%); /* Lighter green for hover */
+  box-shadow:
+    0 0 25px hsla(143, 85%, 60%, 0.6),
+    0 0 50px hsla(143, 85%, 60%, 0.2);
+  transform: scale(1.08);
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 10px 5px hsla(143, 85%, 50%, 0.2);
+  }
+  to {
+    box-shadow: 0 0 20px 5px hsla(143, 85%, 50%, 0.4);
+  }
+}
+
+.calendar button {
+  overflow: hidden;
+}
+
+
 
 /* rem-btns */
 
@@ -230,4 +267,40 @@ p {
   to {
     box-shadow: 0 0 20px 5px hsla(50, 85%, 50%, 0.4);
   }
+}
+
+
+/* Secret Theme */
+.secret-theme .day-btn.active,
+.secret-theme .day-btn.clicked {
+  background-color: transparent !important; /* No background color */
+  background-image: url("../img/bomb.png");
+  background-size: cover; /* Changed to cover to ensure image fills button */
+  background-repeat: no-repeat;
+  background-position: center;
+  color: transparent !important; /* Hide text */
+  box-shadow: 0px 0px 20px 5px hsla(0, 0%, 0%, 0.8) !important;
+}
+
+.secret-theme .calendar .day-btn.active:hover,
+.secret-theme .calendar .day-btn.clicked:hover {
+  background-color: transparent !important;
+  background-image: url("../img/bomb.png") !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  color: transparent !important;
+  box-shadow: 0 0 25px 8px hsla(0, 0%, 0%, 0.6) !important;
+  transform: scale(1.08) !important;
+}
+
+.secret-theme .day-btn:hover {
+  background-color: hsl(0, 0%, 15%) !important; /* mittleres Grau */
+  box-shadow: 0 0 20px 5px hsla(0, 0%, 20%, 0.8) !important;
+  transform: scale(1.08);
+}
+
+body.all-clicked {
+  background-color: hsl(0, 100%, 25%) !important; /* kräftiges Rot */
+  transition: background-color 1s ease;
 }

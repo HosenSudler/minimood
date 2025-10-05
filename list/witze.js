@@ -49,6 +49,21 @@ function setupButtons() {
 
   let lastClickedIndex = -1; // Index des letzten geklickten Buttons
 
+  // Funktion, um zu prüfen, ob alle Buttons geklickt wurden
+  function checkAllButtonsClicked() {
+    const allClicked = Array.from(buttons).every(btn => btn.classList.contains("clicked"));
+    if (allClicked) {
+      console.log("Alle Buttons wurden geklickt! Test erfolgreich.");
+      confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 }
+      });
+    } else {
+      console.log("Noch nicht alle Buttons geklickt.");
+    }
+  }
+
   buttons.forEach((btn, index) => {
     btn.addEventListener("click", () => {
       if (index === lastClickedIndex + 1) {
@@ -58,12 +73,14 @@ function setupButtons() {
         btn.classList.add("clicked");
         lastClickedIndex = index;
         zeigeZufallsWitz();
+        checkAllButtonsClicked(); // Prüfen nach jedem Klick
       } else if (index === lastClickedIndex) {
         // Rückgängig in Reihenfolge
         btn.style.backgroundColor = ""; // Standardfarbe oder zurück zu gelb, wenn Timer schon abgelaufen
         btn.classList.remove("clicked");
         btn.classList.remove("active"); // falls Timer noch nicht gelb war
         lastClickedIndex = index - 1;
+        checkAllButtonsClicked(); // Prüfen nach jedem Rückgängig
       } else {
         // Optional: Meldung, dass man nur vorwärts oder rückwärts klicken darf
         console.log("Bitte den nächsten Button vorwärts oder rückwärts klicken!");
@@ -71,9 +88,6 @@ function setupButtons() {
     });
   });
 }
-
-
-
 
 // ==== Start ====
 ladeWitzeDatei().then(() => {
