@@ -166,7 +166,7 @@ p {
   margin-top: 1em;
   text-align: start;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
-  margin-bottom: 0;
+  margin-bottom: 1;
 }
 
 /* Topbar (exit) */
