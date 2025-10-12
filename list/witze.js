@@ -59,6 +59,16 @@ function setupButtons() {
         spread: 70,
         origin: { y: 0.6 }
       });
+      
+      // Special Mode: Link öffnen
+      const specialMode = localStorage.getItem("specialMode") === "true";
+      if (specialMode) {
+        // Nach kurzer Verzögerung Link öffnen (damit Konfetti sichtbar ist)
+        setTimeout(() => {
+          window.open("https://youtu.be/St7ny38gLp4?si=946zGBk1AKYJHmZX&t=11", "_blank");
+          // Oder für gleichen Tab: window.location.href = "https://...";
+        }, 0);
+      }
     } else {
       console.log("Noch nicht alle Buttons geklickt.");
     }

@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Minimood</title>
 
-    <link rel="stylesheet" href="liste.css?v=1.8">
+
+    <link rel="stylesheet" href="liste.css?v=1.9">
     
     <!-- Vollbildmodus iOS & Android -->
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -22,6 +23,8 @@
     <link rel="shortcut icon" href="../img/favicon_standard.png" type="image/x-icon">
 </head>
 <body>
+
+   
     <div class="topbar">
         <a href="../">
             <button>&times;</button>
@@ -32,7 +35,15 @@
         <h1 id="moodHeading">Witzeliste</h1>
     </div>
 
-    <p>Click the Buttons!</p>
+  <p>
+    Klicke alle 5min auf einen Button!
+    <span class="aurora">
+      <span class="aurora__item"></span>
+      <span class="aurora__item"></span>
+      <span class="aurora__item"></span>
+      <span class="aurora__item"></span>
+    </span>
+  </p>
 
     <div class="calendar" id="calendar">
         <!-- Buttons werden dynamisch eingefügt -->
@@ -41,11 +52,13 @@
     <!-- Witz-Ausgabe -->
     <div id="witz-container"></div>
 
- <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 
 <script src="codeyellow.js"></script>
 
 <script src="witze.js"></script>
+
+<script src="cursor.js"></script>
 
 
 </body>
