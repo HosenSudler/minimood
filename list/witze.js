@@ -36,8 +36,6 @@ function setupButtons() {
     if (nextIndex < buttons.length) {
       setTimeout(() => {
         if (!buttons[nextIndex].classList.contains("clicked")) {
-          buttons[nextIndex].style.backgroundColor = "hsla(50, 85%, 50%, 1.00)";
-          buttons[nextIndex].classList.add("active");
         }
         aktiviereNaechstenButton(nextIndex);
       }, 300000); // 5 Minuten
@@ -78,7 +76,7 @@ function setupButtons() {
     btn.addEventListener("click", () => {
       if (index === lastClickedIndex + 1) {
         // Vorwärts klicken
-        btn.style.backgroundColor = "hsl(143, 85%, 50%)"; // grün
+        btn.style.backgroundColor = "hsla(150, 100%, 50%, 1.00)"; // grün
         btn.classList.remove("active");
         btn.classList.add("clicked");
         lastClickedIndex = index;
