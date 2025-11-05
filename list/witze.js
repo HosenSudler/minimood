@@ -81,6 +81,9 @@ function setupButtons() {
         btn.classList.add("clicked");
         lastClickedIndex = index;
         zeigeZufallsWitz();
+
+        handleButtonClick(btn);
+
         checkAllButtonsClicked(); // Prüfen nach jedem Klick
       } else if (index === lastClickedIndex) {
         // Rückgängig in Reihenfolge
@@ -95,6 +98,51 @@ function setupButtons() {
       }
     });
   });
+}
+
+function handleButtonClick(button) {
+  const specialMode = localStorage.getItem("specialMode") === "true";
+  
+  if (specialMode) {
+    // GIF Container erstellen und anzeigen
+    const gifContainer = document.createElement('div');
+    gifContainer.style.position = 'absolute';
+    gifContainer.style.top = '50%';
+    gifContainer.style.left = '50%';
+    gifContainer.style.transform = 'translate(-50%, -50%)';
+    gifContainer.style.zIndex = '1000';
+    
+    const gif = document.createElement('img');
+    gif.src = '../img/boom.gif'; // Hier dein GIF-Pfad
+    gif.style.width = '200px'; // Anpassen nach Bedarf
+    gif.style.height = 'auto';
+    
+    gifContainer.appendChild(gif);
+    button.style.position = 'relative';
+    button.appendChild(gifContainer);
+    
+    // Nach GIF-Dauer (z.B. 2 Sekunden) zum Bild wechseln
+    setTimeout(() => {
+      gifContainer.remove(); // GIF entfernen
+      
+      // Bild anzeigen
+      const imageContainer = document.createElement('div');
+      imageContainer.style.position = 'absolute';
+      imageContainer.style.top = '50%';
+      imageContainer.style.left = '50%';
+      imageContainer.style.transform = 'translate(-50%, -50%)';
+      imageContainer.style.zIndex = '1000';
+      
+      const image = document.createElement('img');
+      image.src = '../img/speed-moon.png'; // Hier dein Bild-Pfad
+      image.style.width = '70px'; // Anpassen nach Bedarf
+      image.style.height = 'auto';
+      
+      imageContainer.appendChild(image);
+      button.appendChild(imageContainer);
+
+    }, 1000); // GIF für 2 Sekunden (Dauer anpassen!)
+  }
 }
 
 // ==== Start ====
