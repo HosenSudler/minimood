@@ -231,7 +231,7 @@ p {
 /* Secret Theme bumm */
 
 .secret-theme {
-  background-image: url("../img/wolkenblur.png");
+  background: hsl(0, 0%, 3%);
   background-size: cover;
   background-repeat: no-repeat;  
   width: 100vw;
